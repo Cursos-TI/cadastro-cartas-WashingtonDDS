@@ -21,7 +21,7 @@ int main() {
   
   unsigned long int populacao;
   printf("A população da cidade (número inteiro): \n");
-  scanf("%d", &populacao);
+  scanf("%lu", &populacao);
   
   float area;
   printf("A área da cidade em km² (número decimal): \n");
@@ -35,15 +35,15 @@ int main() {
   printf("O número de pontos turísticos na cidade (número inteiro):  \n");
   scanf("%d", &numeroPontosTuristicos);
   
-  float densidadePopulacional = populacao / area;
+  float densidadePopulacional = (float)populacao / area;
   
-  float pibPerCapita;
+  float pibPerCapita = pib / populacao;    
   
-  pibPerCapita = (float) populacao / pib;
 
-  float superPoder;
-
-  superPoder = (float) populacao + area + pib + numeroPontosTuristicos + pibPerCapita + (1/densidadePopulacional);
+  float superPoder = populacao + area + pib +
+                     numeroPontosTuristicos +
+                     pibPerCapita +
+                     (1 / densidadePopulacional);
   
   //CARTA 2
   printf("\nCARTA 2 INSIRA OS DADOS \n\n");
@@ -60,9 +60,9 @@ int main() {
   printf("O nome da cidade (máximo 29 caracteres): \n");
   scanf("%s", nomeDaCidade2);
   
-  int populacao2;
+  unsigned long int populacao2;
   printf("A população da cidade (número inteiro): \n");
-  scanf("%d", &populacao2);
+  scanf("%lu", &populacao2);
   
   float area2;
   printf("A área da cidade em km² (número decimal): \n");
@@ -76,15 +76,13 @@ int main() {
   printf("O número de pontos turísticos na cidade (número inteiro):  \n");
   scanf("%d", &numeroPontosTuristicos2);
   
-  float densidadePopulacional2 = populacao2 / area2;
-  
-  float pibPerCapita2;
-  
-  pibPerCapita2 = (float) populacao2 / pib2;
+  float densidadePopulacional2 = (float)populacao2 / area2;
+  float pibPerCapita2 = pib2 / populacao2;
 
-  float superPoder2;
-
-  superPoder2 = (float) populacao2 + area2 + pib2 + numeroPontosTuristicos2 + pibPerCapita2 + (1/densidadePopulacional2);
+  float superPoder2 = populacao2 + area2 + pib2 +
+                      numeroPontosTuristicos2 +
+                      pibPerCapita2 +
+                      (1 / densidadePopulacional2);
  
   printf(" Carta 1:\n Estado: %c \n Código: %s \n Nome da Cidade: %s \n População: %d \n Área: %.2f km² \n PIB: %.2f bilhões \n Número de Pontos Turísticos: %d \n Densidade Populacional: %.2f hab/km² \n PIB per Capita: %.2f reais \n Super Poder: %.2f \n\n", estado, codigoDaCarta, nomeDaCidade, populacao, area, pib, numeroPontosTuristicos, densidadePopulacional, pibPerCapita, superPoder);
   printf(" Carta 2:\n Estado: %c \n Código: %s \n Nome da Cidade: %s \n População: %d \n Área: %.2f km² \n PIB: %.2f bilhões \n Número de Pontos Turísticos: %d \n Densidade Populacional: %.2f hab/km² \n PIB per Capita: %.2f reais \n Super Poder: %.2f \n\n", estado2, codigoDaCarta2, nomeDaCidade2, populacao2, area2, pib2, numeroPontosTuristicos2, densidadePopulacional2, pibPerCapita2, superPoder2);
@@ -165,6 +163,114 @@ int main() {
     default:
       printf("Opção inválida!\n");
   }
+
+
+
+  // =========================================================
+  // >>> AQUI TERMINA A IMPLEMENTAÇÃO DO NÍVEL AVENTUREIRO
+  // >>> A PARTIR DAQUI COMEÇA A IMPLEMENTAÇÃO DO NÍVEL MESTRE
+  // =========================================================
+
+    int atributo1, atributo2;
+
+  float valor1_carta1 = 0, valor2_carta1 = 0;
+  float valor1_carta2 = 0, valor2_carta2 = 0;
+
+  printf("\n===== NÍVEL MESTRE =====\n");
+
+  // ---------- PRIMEIRO ATRIBUTO ----------
+  printf("\nEscolha o PRIMEIRO atributo:\n");
+  printf("1 - População\n");
+  printf("2 - Área\n");
+  printf("3 - PIB\n");
+  printf("4 - Pontos Turísticos\n");
+  printf("5 - Densidade Demográfica\n");
+  printf("Opção: ");
+  scanf("%d", &atributo1);
+
+  switch (atributo1) {
+    case 1:
+      valor1_carta1 = populacao;
+      valor1_carta2 = populacao2;
+      break;
+    case 2:
+      valor1_carta1 = area;
+      valor1_carta2 = area2;
+      break;
+    case 3:
+      valor1_carta1 = pib;
+      valor1_carta2 = pib2;
+      break;
+    case 4:
+      valor1_carta1 = numeroPontosTuristicos;
+      valor1_carta2 = numeroPontosTuristicos2;
+      break;
+    case 5:
+      valor1_carta1 = densidadePopulacional;
+      valor1_carta2 = densidadePopulacional2;
+      break;
+    default:
+      printf("Opção inválida!\n");
+      return 0;
+  }
+
+  // ---------- SEGUNDO ATRIBUTO (DINÂMICO) ----------
+  printf("\nEscolha o SEGUNDO atributo (diferente do primeiro):\n");
+
+  if (atributo1 != 1) printf("1 - População\n");
+  if (atributo1 != 2) printf("2 - Área\n");
+  if (atributo1 != 3) printf("3 - PIB\n");
+  if (atributo1 != 4) printf("4 - Pontos Turísticos\n");
+  if (atributo1 != 5) printf("5 - Densidade Demográfica\n");
+
+  printf("Opção: ");
+  scanf("%d", &atributo2);
+
+  if (atributo1 == atributo2) {
+    printf("Erro: atributos não podem ser iguais!\n");
+    return 0;
+  }
+
+  switch (atributo2) {
+    case 1:
+      valor2_carta1 = populacao;
+      valor2_carta2 = populacao2;
+      break;
+    case 2:
+      valor2_carta1 = area;
+      valor2_carta2 = area2;
+      break;
+    case 3:
+      valor2_carta1 = pib;
+      valor2_carta2 = pib2;
+      break;
+    case 4:
+      valor2_carta1 = numeroPontosTuristicos;
+      valor2_carta2 = numeroPontosTuristicos2;
+      break;
+    case 5:
+      valor2_carta1 = densidadePopulacional;
+      valor2_carta2 = densidadePopulacional2;
+      break;
+    default:
+      printf("Opção inválida!\n");
+      return 0;
+  }
+
+  // ---------- SOMA DOS ATRIBUTOS ----------
+  float somaCarta1 = valor1_carta1 + valor2_carta1;
+  float somaCarta2 = valor1_carta2 + valor2_carta2;
+
+  // ---------- RESULTADO FINAL (TERNÁRIO) ----------
+  printf("\n===== RESULTADO FINAL =====\n");
+  printf("%s -> Soma: %.2f\n", nomeDaCidade, somaCarta1);
+  printf("%s -> Soma: %.2f\n", nomeDaCidade2, somaCarta2);
+
+  (somaCarta1 > somaCarta2) ? 
+      printf("Vencedora: %s\n", nomeDaCidade) :
+  (somaCarta2 > somaCarta1) ? 
+      printf("Vencedora: %s\n", nomeDaCidade2) :
+      printf("Empate!\n");
 
 return 0;
  
