@@ -101,6 +101,71 @@ int main() {
 
   printf(" Comparação de Cartas:\n População: carta %d venceu \n Área: carta %d venceu \n PIB: carta %d venceu \n Pontos Turísticos: carta %d venceu \n Densidade Populacional: carta %d venceu \n PIB per Capita: carta %d venceu \n Super Poder: carta %d venceu \n\n", resultadoPopu, resultadoArea, resultadoPib, resultadoPontos, resultadoDen, resultadoPibCapi, resultadoSuper);
 
+   int opcao;
+
+  printf("===== MENU DE COMPARAÇÃO =====\n");
+  printf("1 - População\n");
+  printf("2 - Área\n");
+  printf("3 - PIB\n");
+  printf("4 - Pontos Turísticos\n");
+  printf("5 - Densidade Demográfica (MENOR vence)\n");
+  printf("Escolha o atributo: ");
+  scanf("%d", &opcao);
+
+  printf("\nComparação entre %s e %s\n\n", nomeDaCidade, nomeDaCidade2);
+
+  switch (opcao) {
+
+    case 1:
+      if (populacao > populacao2)
+        printf("Vencedora: %s\n", nomeDaCidade);
+      else if (populacao < populacao2)
+        printf("Vencedora: %s\n", nomeDaCidade2);
+      else
+        printf("Empate!\n");
+      break;
+
+    case 2:
+      if (area > area2)
+        printf("Vencedora: %s\n", nomeDaCidade);
+      else if (area < area2)
+        printf("Vencedora: %s\n", nomeDaCidade2);
+      else
+        printf("Empate!\n");
+      break;
+
+    case 3:
+      if (pib > pib2)
+        printf("Vencedora: %s\n", nomeDaCidade);
+      else if (pib < pib2)
+        printf("Vencedora: %s\n", nomeDaCidade2);
+      else
+        printf("Empate!\n");
+      break;
+
+    case 4:
+      if (numeroPontosTuristicos > numeroPontosTuristicos2)
+        printf("Vencedora: %s\n", nomeDaCidade);
+      else if (numeroPontosTuristicos < numeroPontosTuristicos2)
+        printf("Vencedora: %s\n", nomeDaCidade2);
+      else
+        printf("Empate!\n");
+      break;
+
+    case 5:
+     
+      if (densidadePopulacional < densidadePopulacional2)
+        printf("Vencedora: %s\n", nomeDaCidade);
+      else if (densidadePopulacional > densidadePopulacional2)
+        printf("Vencedora: %s\n", nomeDaCidade2);
+      else
+        printf("Empate!\n");
+      break;
+
+    default:
+      printf("Opção inválida!\n");
+  }
+
 return 0;
  
 } 
